@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Symbol Slide</title>
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <header class="top-bar">
+      <div class="brand-group">
+        <div class="brand-emblem" aria-hidden="true">❖</div>
+        <div>
+          <h1 class="game-title">SYMBOL SLIDE</h1>
+          <p class="subtitle">Align each relic with its inlaid socket</p>
+        </div>
+      </div>
+
+      <div class="level-controls">
+        <button id="prev-level-btn" class="btn btn-icon" type="button" title="Previous Level" aria-label="Previous Level">‹</button>
+        <label class="sr-only" for="level-select">Select Level</label>
+        <select id="level-select" class="level-select"></select>
+        <button id="next-level-btn" class="btn btn-icon" type="button" title="Next Level" aria-label="Next Level">›</button>
+        <span id="mode-badge" class="mode-badge" title="Sliding behavior for this level">Full Slide</span>
+      </div>
+    </header>
+
+    <section class="hud-bar" aria-label="Game status and actions">
+      <div class="hud-stats">
+        <div class="stat-box">
+          <span class="stat-label">MOVES</span>
+          <span id="moves-value" class="stat-value">0</span>
+        </div>
+        <div class="stat-box par-box">
+          <span class="stat-label">PAR</span>
+          <span id="par-value" class="stat-value">–</span>
+        </div>
+        <div class="stat-box">
+          <span class="stat-label">BEST</span>
+          <span id="best-value" class="stat-value">–</span>
+        </div>
+        <div class="stat-box stars-box" aria-label="Projected star rating">
+          <span class="stat-label">RATING</span>
+          <div id="live-stars" class="stars-row">★★★</div>
+        </div>
+      </div>
+
+      <div class="hud-actions">
+        <button id="undo-btn" class="btn" type="button" disabled>Undo</button>
+        <button id="reset-btn" class="btn" type="button">Reset</button>
+        <button id="hint-btn" class="btn btn-accent" type="button">Hint</button>
+      </div>
+    </section>
+
+    <main class="stage">
+      <div class="board-frame">
+        <div id="board" class="board" role="application" aria-label="Symbol Slide puzzle grid">
+          <div id="board-grid" class="board-grid"></div>
+          <div id="tile-layer" class="tile-layer"></div>
+        </div>
+      </div>
+
+      <div id="status-banner" class="status-banner" role="status" aria-live="polite">
+        Drag a tile or select one and use arrow keys to slide.
+      </div>
+    </main>
+
+    <footer class="controls-legend">
+      <span><strong>Drag</strong> tile or <strong>click</strong> a lane to slide</span>
+      <span>•</span>
+      <span><strong>1–6 / Tab</strong> select tile</span>
+      <span>•</span>
+      <span><strong>Arrows / WASD</strong> move</span>
+      <span>•</span>
+      <span><strong>Z</strong> undo · <strong>R</strong> reset · <strong>H</strong> hint</span>
+    </footer>
+  </div>
+
+  <div id="victory-modal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="victory-title">
+    <div class="modal-card">
+      <div id="victory-stars" class="victory-stars">★★★</div>
+      <h2 id="victory-title">Chamber Unlocked</h2>
+      <p id="victory-summary" class="victory-summary"></p>
+      <div class="modal-actions">
+        <button id="modal-replay-btn" class="btn" type="button">Replay</button>
+        <button id="modal-next-btn" class="btn btn-accent" type="button">Next Level</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="/func.js"></script>
+</body>
+</html>
